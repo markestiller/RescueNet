@@ -39,3 +39,5 @@ function getQID(name) {
 export { getQID };
 
 getNearbyCities('Q24639');
+
+export default getNearbyCities;
