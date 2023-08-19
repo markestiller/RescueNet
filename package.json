@@ -1,0 +1,11 @@
+{
+    "name": "hack-the-6ix",
+    "version": "1.0.0",
+    "description": "",
+    "main": " ",
+    "scripts": {
+        "start": "cd client && npm run dev && cd ../backend && npm run start"
+    },
+    "author": "",
+    "license": "ISC"
+}
