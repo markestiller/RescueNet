@@ -7,24 +7,28 @@ import {
 
 const cardData = [
     {
-        title: 'Noteworthy technology acquisitions 2021',
+        title: 'Speedy Relocation -  On Dial',
         description:
-            'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+            'At **company name**, our infrastructure is guaranteed to get your immediate housing 24/7/365.',
+        badge: 'Guaranteed',
     },
     {
-        title: 'Noteworthy technology acquisitions 2021',
+        title: 'Safety Is Not An Afterthought',
         description:
-            'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+            'Through our rigorous vetting process, we are sure to match quality homeowners and subscribers on all sides.',
+        badge: 'Safe',
     },
     {
-        title: 'Noteworthy technology acquisitions 2021',
+        title: 'Not A Dent In Your Wallet',
         description:
-            'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+            'We ensure you more than insurance at a lower rate. Sounds like a win to us.',
+        badge: 'Cheap',
     },
     {
-        title: 'Noteworthy technology acquisitions 2021',
+        title: 'Track Your Start - End Point Without Hassle',
         description:
-            'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+            'No hidden fees or surprises out of the box. Receive immediate warnings and notifications about your status with us.',
+        badge: 'Transparent',
     },
 ];
 
@@ -43,53 +47,73 @@ const About = () => {
                     />
                 </div>
                 <div>
-                    <div className="flex justify-center items-center text-5xl font-bold mb-4">
+                    <div className="flex justify-center items-center text-5xl font-bold mb-10 bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text text-transparent">
                         Mission Statement
                     </div>
-                    <div className="flex items-center justify-center  max-w-screen-md mx-auto text-sm lg:text-base text-justify">
+                    <div className="flex items-center justify-center max-w-screen-md mx-auto lg:text-lg text-justify">
                         We believe in a world where disaster doesn't have to
-                        mean despair. Imagine a future where hurricanes,
-                        wildfires, and unforeseen calamities aren't just met
-                        with panic, but with a sense of preparedness and
-                        security. Here's the scoop: We've revolutionized the way
-                        you protect your loved ones and yourself. Our mission is
-                        simple yet groundbreaking – offering you a subscription
-                        that guarantees your safety and shelter. <br /> <br />{' '}
-                        We're not just about shelter – we're about community.
-                        Our network of resilient hearts beats together, forming
-                        a family that stands strong in the face of adversity.
-                        You're not just subscribing; you're joining a movement
-                        of hope, unity, and strength. And yes, we're not doing
-                        this out of the goodness of our hearts alone. Together,
-                        we'll weather the storm, emerging stronger, more
-                        connected, and fiercely prepared. Join us. Embrace
-                        resilience. Welcome to a future where disasters may
-                        knock, but we've already answered the door.
+                        mean despair. A scenario where hurricanes, wildfires,
+                        and unforeseen calamities aren't just met with panic,
+                        but with a sense of preparedness and security. Here's
+                        the scoop: We've revolutionized the way you protect your
+                        loved ones and yourself. Our mission is simple yet
+                        groundbreaking – offering you a subscription that
+                        guarantees your safety and shelter. Welcome to a future
+                        where disasters may knock, but we've already answered
+                        the door.
                     </div>
                 </div>
             </div>
 
             <div className="mb-20">
                 <Accordion open={open === 1}>
-                    <AccordionHeader onClick={() => handleOpen(1)}>
+                    <AccordionHeader
+                        onClick={() => handleOpen(1)}
+                        className="group text-4xl bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text text-transparent hover:text-black transition-colors duration-300"
+                    >
                         For Subscribers ➔
                     </AccordionHeader>
-                    <AccordionBody>
-                        We&apos;re not always in the position that we want to be
-                        at. We&apos;re constantly growing. We&apos;re constantly
-                        making mistakes. We&apos;re constantly trying to express
-                        ourselves and actualize our dreams.
+
+                    <AccordionBody className="text-black bg-gray-50">
+                        <span className="font-bold text-3xl">Step 1</span>{' '}
+                        <br />
+                        Open a subscription account with us and choose the plan
+                        that best suits your needs and situations along with
+                        filling out our form.
+                        <br /> <br />
+                        <span className="font-bold text-3xl">Step 2</span>{' '}
+                        <br />
+                        Select your payment provider and pay in monthly or
+                        annual installments. <br /> <br />
+                        <span className="font-bold text-3xl">Step 3</span>{' '}
+                        <br />
+                        Follow our instructions when a disaster arises on our
+                        dashboard, and arrive to quick safety through our
+                        service providers.
                     </AccordionBody>
                 </Accordion>
                 <Accordion open={open === 2}>
-                    <AccordionHeader onClick={() => handleOpen(2)}>
+                    <AccordionHeader
+                        onClick={() => handleOpen(2)}
+                        className="group text-4xl bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text text-transparent hover:text-black transition-colors duration-300"
+                    >
                         For Homeowners ➔
                     </AccordionHeader>
-                    <AccordionBody>
-                        We&apos;re not always in the position that we want to be
-                        at. We&apos;re constantly growing. We&apos;re constantly
-                        making mistakes. We&apos;re constantly trying to express
-                        ourselves and actualize our dreams.
+                    <AccordionBody className="text-black bg-gray-50">
+                        <span className="font-bold text-2xl">Step 1</span>{' '}
+                        <br />
+                        Open a homeowner account with us and choose the plan
+                        that best suits your needs and situations along with
+                        filling out our form.
+                        <br /> <br />
+                        <span className="font-bold text-2xl">Step 2</span>{' '}
+                        <br />
+                        Provide temporary housing to citizens impacted by
+                        natural disasters in your area.
+                        <br /> <br />
+                        <span className="font-bold text-2xl">Step 3</span>{' '}
+                        <br />
+                        Cash out upon the completion of the stay by the family.
                     </AccordionBody>
                 </Accordion>
             </div>
@@ -101,7 +125,11 @@ const About = () => {
                             href="#"
                             className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                         >
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <span class="bg-green-100 text-green-800 text-md font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                                {card.badge}
+                            </span>
+
+                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white mt-2">
                                 {card.title}
                             </h5>
                             <p className="font-normal text-gray-700 dark:text-gray-400">
