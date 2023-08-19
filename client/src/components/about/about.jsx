@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+    Accordion,
+    AccordionHeader,
+    AccordionBody,
+} from '@material-tailwind/react';
 
 const About = () => {
+    const [open, setOpen] = React.useState(1);
+
+    const handleOpen = (value) => setOpen(open === value ? 0 : value);
     return (
         <div name="About" className="w-full h-screen p-4 md:p-8 lg:p-16">
             <div className="flex items-center justify-center text-4xl font-bold mb-4">
@@ -38,65 +46,45 @@ const About = () => {
                 Welcome to a future where disasters may knock, but we've already
                 answered the door.
             </div>
-            <div class="m-2 space-y-2">
-                <div
-                    class="group flex flex-col gap-2 rounded-lg bg-black p-5 text-white"
-                    tabindex="1"
-                >
-                    <div class="flex cursor-pointer items-center justify-between">
-                        <span> HTML </span>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/9/96/Chevron-icon-drop-down-menu-WHITE.png"
-                            class="h-2 w-3 transition-all duration-500 group-focus:-rotate-180"
-                        />
-                    </div>
-                    <div class="invisible h-auto max-h-0 items-center opacity-0 transition-all group-focus:visible group-focus:max-h-screen group-focus:opacity-100 group-focus:duration-1000">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </div>
-                </div>
-
-                <div
-                    class="group flex flex-col gap-2 rounded-lg bg-black p-5 text-white w-[500px]"
-                    tabindex="2"
-                >
-                    <div class="flex cursor-pointer items-center justify-between">
-                        <span> CSS </span>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/9/96/Chevron-icon-drop-down-menu-WHITE.png"
-                            class="h-2 w-3 transition-all duration-500 group-focus:-rotate-180"
-                        />
-                    </div>
-                    <div class="invisible h-auto max-h-0 items-center opacity-0 transition-all group-focus:visible group-focus:max-h-screen group-focus:opacity-100 group-focus:duration-1000">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </div>
-                </div>
-
-                <div
-                    class="group flex flex-col gap-2 rounded-lg bg-black p-5 text-white"
-                    tabindex="3"
-                >
-                    <div class="flex cursor-pointer items-center justify-between">
-                        <span> JAVASCRIPT </span>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/9/96/Chevron-icon-drop-down-menu-WHITE.png"
-                            class="h-2 w-3 transition-all duration-500 group-focus:-rotate-180"
-                        />
-                    </div>
-                    <div class="invisible h-auto max-h-0 items-center opacity-0 transition-all group-focus:visible group-focus:max-h-screen group-focus:opacity-100 group-focus:duration-1000">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 h-screen relative">
+                <div>image</div>
+                <div>
+                    <Accordion open={open === 1}>
+                        <AccordionHeader onClick={() => handleOpen(1)}>
+                            What is Material Tailwind?
+                        </AccordionHeader>
+                        <AccordionBody>
+                            We&apos;re not always in the position that we want
+                            to be at. We&apos;re constantly growing. We&apos;re
+                            constantly making mistakes. We&apos;re constantly
+                            trying to express ourselves and actualize our
+                            dreams.
+                        </AccordionBody>
+                    </Accordion>
+                    <Accordion open={open === 2}>
+                        <AccordionHeader onClick={() => handleOpen(2)}>
+                            How to use Material Tailwind?
+                        </AccordionHeader>
+                        <AccordionBody>
+                            We&apos;re not always in the position that we want
+                            to be at. We&apos;re constantly growing. We&apos;re
+                            constantly making mistakes. We&apos;re constantly
+                            trying to express ourselves and actualize our
+                            dreams.
+                        </AccordionBody>
+                    </Accordion>
+                    <Accordion open={open === 3}>
+                        <AccordionHeader onClick={() => handleOpen(3)}>
+                            What can I do with Material Tailwind?
+                        </AccordionHeader>
+                        <AccordionBody>
+                            We&apos;re not always in the position that we want
+                            to be at. We&apos;re constantly growing. We&apos;re
+                            constantly making mistakes. We&apos;re constantly
+                            trying to express ourselves and actualize our
+                            dreams.
+                        </AccordionBody>
+                    </Accordion>
                 </div>
             </div>
         </div>
