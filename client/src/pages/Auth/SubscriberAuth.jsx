@@ -68,7 +68,7 @@ export default function SubscriberAuth() {
         postalCode: '',
         age: '',
         phoneNumber: '',
-        occupants: 0,
+        occupants: '0',
         password: '',
     });
 
