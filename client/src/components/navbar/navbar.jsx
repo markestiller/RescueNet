@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link } from 'react-scroll';
+import { Link, animateScroll } from 'react-scroll';
 
 const Navbar = () => {
-    let links = [
+    const links = [
         { id: 1, name: 'Home' },
         { id: 2, name: 'About' },
         { id: 3, name: 'Contact' },
     ];
 
-    let [icon, setIcon] = useState(false);
+    const [icon, setIcon] = useState(false);
+    const [navbarScrollClass, setNavbarScrollClass] = useState('');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setNavbarScrollClass('shadow-md');
+            } else {
+                setNavbarScrollClass('');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <div
             name="Navbar"
-            className="fixed flex justify-between items-center w-full h-20 z-50 bg-red-200"
+            className={`fixed flex justify-between items-center w-full h-20 z-50 bg-white ${navbarScrollClass}`}
         >
             <div className="animate-pulse text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 px-4">
                 WildFire
