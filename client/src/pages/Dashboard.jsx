@@ -57,7 +57,7 @@ export default function Dashboard() {
                 ></div>
             </div>
             <div className="flex flex-col items-center p-8">
-                <h1 className="text-4xl font-semibold">
+                <h1 className="text-4xl font-semibold ">
                     Welcome back,{' '}
                     <span className="bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text text-transparent">
                         {user.firstname}
@@ -123,8 +123,13 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-            <div className="absolute right-0 bottom-0  w-1/3 h-1/3">
-                <img src={appreciation} />
+            <div className="flex pt-10 items-center justify-center">
+                <div className="flex font-bold text-2xl">
+                    Thank you for your support!
+                </div>
+                <div className="flex w-1/4 h-1/4 ">
+                    <img src={appreciation} />
+                </div>
             </div>
         </div>
     );
