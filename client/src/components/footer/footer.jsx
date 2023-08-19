@@ -1,7 +1,6 @@
 import React from 'react';
-import Wave from 'react-wavify';
 
-const Footer = () => {
+const footer = () => {
     return (
         <div name="Contact" className="relative w-full h-60">
             <Wave
@@ -33,4 +32,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default footer;
