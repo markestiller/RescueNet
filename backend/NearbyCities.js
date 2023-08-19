@@ -22,7 +22,7 @@ async function getNearbyCities(id = 'Q24639') {
                 nearbyCities.push(result.data[i].city);
             }
         }
-        console.log(nearbyCities);
+        // console.log(nearbyCities);
         return nearbyCities;
     } catch (error) {
         console.error(error);

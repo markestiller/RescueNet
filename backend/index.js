@@ -10,7 +10,7 @@ import { createMessage } from './Messaging.js';
 import Cities from './Cities/CitiesSchema.js';
 import Subscriber from './Subscriber/SubscriberSchema.js';
 import HomeOwner from './HomeOwner/HomeOwnerSchema.js';
-import getNearbyCities from './NearbyCities.js';
+import getNearbyCities, { getQID } from './NearbyCities.js';
 
 dotenv.config({ path: './.env.local' });
 
@@ -69,23 +69,16 @@ app.post('/alert', async (req, res) => {
     // Now we have all the subscribers in the affected region
     // * Homeowners
     // First find all nearby cities
-    let nearbyCities = await getNearbyCities(); // TODO Andy add the city ID here
+    const evacutationCityQID = getQID(evacutationCity);
+    let nearbyCities = await getNearbyCities(evacutationCityQID);
 
-    // Find all homeowners in these nearby cities
-    let homeowners = [];
-    nearbyCities.forEach(async (city) => {
-        let nearbyCity = await Cities.findOne({ city: city }).exec();
-        let cityHomeowners = nearbyCity?.homeowners;
-        cityHomeowners?.forEach(async (homeowner) => {
-            let homeownerObject = await HomeOwner.findOne({
-                _id: homeowner,
-            }).exec();
-            homeowners.push(homeownerObject);
-        });
-    });
-    console.log(homeowners);
-    /* 
+    const nearbyCityObjects = (await Promise.all(nearbyCities.map(city => Cities.findOne({ city: city }).exec())))
+        .filter(value => value != null)
+    const nearbyHomeownerIds = nearbyCityObjects.map(cityObj => cityObj.homeowners).flat() // new ObjectId(...)
+    const allHomeownerObjects = await Promise.all(nearbyHomeownerIds.map(id => HomeOwner.findById(id)))
 
+
+    /*
     // Send messages
     Object.entries(people).forEach(([key, value]) => {
         
