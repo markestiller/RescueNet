@@ -48,6 +48,11 @@ const SubscriberSchema = Schema({
         type: Number,
         required: true,
     },
+
+    isHoused: {
+        type: Boolean,
+        required: true,
+    }
 });
 
 const Subscriber = mongoose.model('Subscriber', SubscriberSchema);
