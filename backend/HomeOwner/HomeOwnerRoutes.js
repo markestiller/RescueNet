@@ -1,23 +1,18 @@
 import express from 'express';
 const router = express.Router();
 
-import { getById, create} from './HomeOwnerController';
+import { getById, create} from './HomeOwnerController.js';
 
 router.post('/', async (req, res) => {
-    await create(req);
-
-    // also update new table
-
-
-    res.sendStatus(200);
+    create(req.body, res);
 });
 
 
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    const homeOwner = await getById(id);
-    return homeOwner;
+    getById(id, res);
 });
 
+export default router
 
 

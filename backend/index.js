@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import SubscriberRouter from './Subscriber/SubscriberRouter.js';
+import HomeOwnerRouter from './HomeOwner/HomeOwnerRoutes.js'
 
 const allowedOrigins = ['http://localhost:5173', undefined]; // allow undefined origin from Postman and curl
 const corsOps = {
@@ -30,3 +31,4 @@ app.use('/alert', (req, res) => {
     res.status(202).send('Alert received');
 });
 app.use('/api/subscriber', SubscriberRouter);
+app.use('/api/homeowner', HomeOwnerRouter);
