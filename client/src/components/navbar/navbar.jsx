@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
         <div
             name="Navbar"
-            className="fixed flex justify-between items-center w-full h-20 z-50 bg-red-200"
+            className="fixed flex justify-between items-center w-full h-20 z-50 bg-slate-900"
         >
             <div className="animate-pulse text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 px-4">
                 WildFire
