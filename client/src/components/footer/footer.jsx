@@ -17,7 +17,7 @@ const Footer = () => {
             />
             <div className="absolute top-0 w-full mt-20 bg-slate-900 flex items-center flex-col justify-center">
                 <div className="text-white text-4xl font-bold mb-4">
-                    Drop a A line
+                    Drop Us A Line
                 </div>
                 <div className="flex text-white gap-6 mb-4 cursor-pointer">
                     <div>About</div>
