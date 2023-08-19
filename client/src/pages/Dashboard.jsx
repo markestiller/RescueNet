@@ -1,6 +1,7 @@
 import appreciation from '../assets/appreciation.svg';
 
 export default function Dashboard() {
+    // false - homeowner,
     const users = [
         {
             id: 1,
@@ -11,6 +12,7 @@ export default function Dashboard() {
             address: 'no home st',
             subscribed: false,
             balance: 100,
+            subcriber: false,
         },
         {
             id: 2,
@@ -41,7 +43,7 @@ export default function Dashboard() {
     let user = users[0];
 
     return (
-        <div className="w-full h-screen">
+        <div className="w-full h-screen relative">
             <div
                 className="absolute inset-x-0 -top-40 -z-10  overflow-hidden blur-3xl sm:-top-80"
                 aria-hidden="true"
@@ -121,7 +123,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-            <div className="items-center w-1/3 h-1/3">
+            <div className="absolute right-0 bottom-0  w-1/3 h-1/3">
                 <img src={appreciation} />
             </div>
         </div>
