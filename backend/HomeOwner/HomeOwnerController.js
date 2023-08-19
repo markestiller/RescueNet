@@ -5,8 +5,8 @@ async function getById(id, res) {
     try {
         const homeownerObject = await Homeowner.findById(id).lean();
         return homeownerObject;
-    } catch {
-        res.sendStatus(500)
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 }
 
@@ -14,12 +14,13 @@ async function create(homeownerObject, res) {
     try {
         const created = await Homeowner.create(homeownerObject);
         Cities.findOneAndUpdate(
-            {city: created.city},
-            {$push: {homeowners: created._id}}
+            { city: created.city},
+            { $push: {homeowners: created._id}},
+            { upsert: true }
         )
         res.sendStatus(200).json(created);
-    } catch {
-        res.sendStatus(500)
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 }
 
