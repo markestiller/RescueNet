@@ -13,12 +13,12 @@ async function getById(id, res) {
 async function create(homeownerObject, res) {
     try {
         const created = await Homeowner.create(homeownerObject);
-        Cities.findOneAndUpdate(
-            { city: created.city },
+        await Cities.findOneAndUpdate(
+            { city: homeownerObject.city },
             { $push: { homeowners: created._id } },
             { upsert: true }
         );
-        res.sendStatus(200).json(created);
+        res.status(201).json({ created });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
