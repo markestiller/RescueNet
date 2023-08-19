@@ -13,7 +13,11 @@ const About = () => {
         <div name="About" className="w-full h-screen p-4 md:p-8 lg:p-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 h-screen relative mt-4">
                 <div>
-                    <img src="/images/search.svg" className="-z-50" />
+                    <img
+                        src="/images/search.svg"
+                        className=" pr-10 lg:object-cover -z-50"
+                        loading="lazy"
+                    />
                 </div>
                 <div>
                     <div className="flex justify-end text-4xl font-bold mb-4">
