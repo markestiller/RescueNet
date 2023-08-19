@@ -8,6 +8,7 @@ const Navbar = () => {
         { id: 2, name: 'About' },
         { id: 3, name: 'Contact' },
         { id: 4, name: 'Auth', path: '/auth' },
+        { id: 4, name: 'Dashboard', path: '/dashboard' },
     ];
 
     const [icon, setIcon] = useState(false);

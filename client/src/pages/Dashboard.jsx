@@ -1,51 +1,33 @@
+import { useEffect, useState } from 'react';
 import appreciation from '../assets/appreciation.svg';
 
 export default function Dashboard() {
-    // false - homeowner,
-    const users = [
-        {
-            id: 1,
-            firstname: 'John',
-            lastname: 'Doe',
-            email: 'test@gmail.com',
-            mobile: '+12345678990',
-            address: 'no home st',
-            subscribed: false,
-            balance: 100,
-            subcriber: false,
-        },
-        {
-            id: 2,
-            firstname: 'Jane',
-            lastname: 'Smith',
-            subscribed: false,
-        },
-        {
-            id: 3,
-            firstname: 'Michael',
-            lastname: 'Johnson',
-            subscribed: true,
-        },
-        {
-            id: 4,
-            firstname: 'Emily',
-            lastname: 'Williams',
-            subscribed: false,
-        },
-        {
-            id: 5,
-            firstname: 'David',
-            lastname: 'Brown',
-            subscribed: true,
-        },
-    ];
+    const [userData, setUserData] = useState({});
 
-    let user = users[0];
+    useEffect(() => {
+        // Security
+        let userId = localStorage.getItem('userId'); // '64e11130e80f9c880de414ab'
+        if (!userId) return;
+
+        fetch(import.meta.env.VITE_BACKEND + '/api/subscriber/' + userId, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setUserData(data.subscriber);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     return (
-        <div className="w-full h-screen relative">
+        <div className="relative w-full h-screen">
             <div
-                className="absolute inset-x-0 -top-40 -z-10  overflow-hidden blur-3xl sm:-top-80"
+                className="absolute inset-x-0 overflow-hidden -top-40 -z-10 blur-3xl sm:-top-80"
                 aria-hidden="true"
             >
                 <div
@@ -59,8 +41,8 @@ export default function Dashboard() {
             <div className="flex flex-col items-center p-8">
                 <h1 className="text-4xl font-semibold ">
                     Welcome back,{' '}
-                    <span className="bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text text-transparent">
-                        {user.firstname}
+                    <span className="text-transparent bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text">
+                        {userData?.firstname}
                     </span>{' '}
                     👋
                 </h1>
@@ -79,32 +61,38 @@ export default function Dashboard() {
                 ></div>
             </div>
             <div className="flex flex-col items-center p-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Add more columns here */}
-
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {/* Account Information */}
-                    <div className=" bg-white p-4 border rounded-lg shadow-sm relative pb-10">
-                        <h2 className="text-lg font-semibold mb-2 items-center">
+                    <div className="relative p-4 pb-10 bg-white border rounded-lg shadow-sm ">
+                        <h2 className="items-center mb-2 text-lg font-semibold">
                             Account
                         </h2>
                         <p className="text-gray-700">
-                            {/* Full Name: {user.firstname} {user.lastname} */}
+                            Name: {userData?.firstName} {userData?.lastName}
                         </p>
-                        <p className="text-gray-700">Email: {user.email}</p>
-                        <p className="text-gray-700">Mobile: {user.mobile}</p>
-                        <p className="text-gray-700">Address: {user.address}</p>
-                        {/* Add more user information fields as needed */}
-                        <div className="absolute bottom-0 right-0 p-2 text-sm text-orange-500">
+
+                        <p className="text-gray-700">Age: {userData?.age}</p>
+                        <p className="text-gray-700">
+                            Mobile: {userData?.phoneNumber}
+                        </p>
+                        <p className="text-gray-700">
+                            Address: {userData?.address}
+                        </p>
+                        <p className="text-gray-700">
+                            Occupants: {userData?.occupants}
+                        </p>
+
+                        {/*   <div className="absolute bottom-0 right-0 p-2 text-sm text-orange-500">
                             Edit
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Subscribed Status */}
-                    <div className="bg-white p-4 border rounded-lg shadow-sm relative">
-                        <h2 className="text-lg font-semibold mb-2">Status</h2>
+                    <div className="relative p-4 bg-white border rounded-lg shadow-sm">
+                        <h2 className="mb-2 text-lg font-semibold">Status</h2>
 
                         <p className="text-gray-700">
-                            {user.subscribed
+                            {userData?.isSubscribed
                                 ? 'Subscribed ✅'
                                 : 'Not Subscribed ❌'}
                         </p>
@@ -114,17 +102,17 @@ export default function Dashboard() {
                     </div>
 
                     {/* Balance */}
-                    <div className="bg-white p-4 border rounded-lg shadow-sm relative">
-                        <h2 className="text-lg font-semibold mb-2">Balance</h2>
-                        <p className="text-gray-700">${user.balance}</p>
+                    {/*   <div className="relative p-4 bg-white border rounded-lg shadow-sm">
+                        <h2 className="mb-2 text-lg font-semibold">Balance</h2>
+                        <p className="text-gray-700">${userData?.balance}</p>
                         <div className="absolute bottom-0 right-0 p-2 text-sm text-orange-500">
                             More
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-            <div className="flex pt-10 items-center justify-center">
-                <div className="flex font-bold text-2xl">
+            <div className="flex items-center justify-center pt-10">
+                <div className="flex text-2xl font-bold">
                     Thank you for your support!
                 </div>
                 <div className="flex w-1/4 h-1/4 ">
