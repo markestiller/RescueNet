@@ -11,6 +11,7 @@ const App = () => {
     <div className="w-full">
       <Navbar />
       <Hero />
+      <About />
       <Footer />
     </div>
   );
