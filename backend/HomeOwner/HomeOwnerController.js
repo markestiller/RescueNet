@@ -1,5 +1,5 @@
-import Homeowner from "./HomeownerSchema.js";
-import Cities from "../Cities/CitiesSchema.js"
+import Homeowner from './HomeOwnerSchema.js';
+import Cities from '../Cities/CitiesSchema.js';
 
 async function getById(id, res) {
     try {
@@ -14,14 +14,14 @@ async function create(homeownerObject, res) {
     try {
         const created = await Homeowner.create(homeownerObject);
         Cities.findOneAndUpdate(
-            { city: created.city},
-            { $push: {homeowners: created._id}},
+            { city: created.city },
+            { $push: { homeowners: created._id } },
             { upsert: true }
-        )
+        );
         res.sendStatus(200).json(created);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 }
 
-export {getById, create};
+export { getById, create };
