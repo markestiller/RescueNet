@@ -40,26 +40,23 @@ const Hero = () => {
                         <button className="mr-2 mb-2">
                             <a
                                 href="#_"
-                                className="px-10 py-2.5 relative rounded-full group font-medium text-white font-medium inline-block"
+                                className="px-10 py-2.5 relative rounded-full group  text-white font-medium inline-block"
                             >
                                 <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-500 to-orange-500"></span>
                                 <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-500 to-orange-500"></span>
                                 <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-500 to-orange-500"></span>
                                 <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-500 from-orange-500"></span>
                                 <span className="relative items-baseline inline-flex">
-                                    Get Started <FaArrowRight />
+                                    Get Started 
                                 </span>
                             </a>
                         </button>
                         <button className="mb-2">
                             <a
                                 href="#_"
-                                className="px-8 py-2.5 relative rounded-full group font-medium text-white font-medium inline-block"
+                                className="px-8 py-2.5 rounded-full text-black font-medium inline-block bg-white border-black  hover:border-orange-500 border-[3px]"
                             >
-                                <span className="absolute top-0 left-0 w-full h-full rounded-full opacity-50 filter blur-sm bg-gradient-to-br from-red-500 to-orange-500"></span>
-                                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded-full opacity-50 from-red-500 to-orange-500"></span>
-                                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded-full shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-red-500 to-orange-500"></span>
-                                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded-full bg-gradient-to-br to-red-500 from-orange-500"></span>
+                                
                                 <span className="relative">Sign Up</span>
                             </a>
                         </button>
