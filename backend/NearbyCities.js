@@ -1,5 +1,5 @@
 import fs from 'fs';
-import data from './Cities.json' assert { type: 'json' };
+import data from './UpdatedCities.json' assert { type: 'json' };
 
 async function getNearbyCities(id = 'Q24639') {
     const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${id}/nearbyCities?radius=100`;
@@ -31,13 +31,14 @@ async function getNearbyCities(id = 'Q24639') {
 
 function getQID(name) {
     const match = data.find(
-        (element) => element['cityLabel'].toLowerCase() === name.toLowerCase()
+        (element) => element['placeLabel'].toLowerCase() === name.toLowerCase()
     );
-    return match?.city?.replace('http://www.wikidata.org/entity/', '');
+    return match?.place?.replace('http://www.wikidata.org/entity/', '');
 }
 
 export { getQID };
 
-getNearbyCities('Q24639');
+getNearbyCities('Q2030');
+console.log(getQID("Apex"))
 
 export default getNearbyCities;
