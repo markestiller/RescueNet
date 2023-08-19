@@ -1,3 +1,6 @@
+import fs from 'fs';
+import data from './Cities.json' assert { type: 'json' };
+
 async function getNearbyCities(id = 'Q24639') {
     const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${id}/nearbyCities?radius=100`;
     const options = {
@@ -25,5 +28,14 @@ async function getNearbyCities(id = 'Q24639') {
         console.error(error);
     }
 }
+
+function getQID(name) {
+    const match = data.find(
+        (element) => element['cityLabel'].toLowerCase() === name.toLowerCase()
+    );
+    return match?.city?.replace('http://www.wikidata.org/entity/', '');
+}
+
+export { getQID };
 
 getNearbyCities('Q24639');
