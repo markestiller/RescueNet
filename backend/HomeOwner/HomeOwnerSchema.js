@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const HomeownerSchema = new mongoose.Schema({
+const HomeOwnerSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -52,6 +52,6 @@ const HomeownerSchema = new mongoose.Schema({
   },
 });
 
-const Homeowner = mongoose.model('Homeowner', HomeownerSchema);
+const HomeOwner = mongoose.model('HomeOwner', HomeOwnerSchema);
 
-export default Homeowner;
+export default HomeOwner;
