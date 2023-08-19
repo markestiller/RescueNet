@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, animateScroll } from 'react-scroll';
-
+import { Link as RouterLink } from 'react-router-dom'; // This routes to other pages
 const Navbar = () => {
     const links = [
         { id: 1, name: 'Home' },
         { id: 2, name: 'About' },
         { id: 3, name: 'Contact' },
+        { id: 4, name: 'Auth', path: '/auth' },
     ];
 
     const [icon, setIcon] = useState(false);
@@ -14,48 +15,54 @@ const Navbar = () => {
     return (
         <div
             name="Navbar"
-            className="flex justify-between items-center w-full h-20 z-50 "
+            className="z-50 flex items-center justify-between w-full h-20 "
         >
-            <div className="animate-pulse text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 px-4">
+            <div className="px-4 text-4xl font-bold text-transparent animate-pulse bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
                 WildFire
             </div>
             <div>
-                <ul className="hidden md:flex flex-row">
-                    {links.map(({ id, name }) => (
+                <ul className="flex-row hidden md:flex">
+                    {links.map(({ id, name, path }) => (
                         <li
                             key={id}
-                            className="cursor-pointer font-bold text-orange-500 hover:scale-105 hover:rotate-12 
-                        duration-100 px-4"
+                            className="px-4 font-bold text-orange-500 duration-100 cursor-pointer hover:scale-105 hover:rotate-12"
                         >
-                            <Link to={name} smooth duration={500}>
-                                {name}
-                            </Link>
+                            {path ? (
+                                <RouterLink to={path}>{name}</RouterLink>
+                            ) : (
+                                <Link to={name} smooth duration={500}>
+                                    {name}
+                                </Link>
+                            )}
                         </li>
                     ))}
                 </ul>
             </div>
             <div
                 onClick={() => setIcon(!icon)}
-                className="flex cursor-pointer md:hidden z-10 hover:scale-105 text-white px-4"
+                className="z-10 flex px-4 text-black cursor-pointer md:hidden hover:scale-105"
             >
                 {icon ? <FaTimes size={20} /> : <FaBars size={20} />}
             </div>
             {icon && (
-                <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen  bg-red-200 ">
-                    {links.map(({ id, name }) => (
+                <ul className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-screen bg-red-200">
+                    {links.map(({ id, name, path }) => (
                         <li
                             key={id}
-                            className="cursor-pointer py-8 hover:scale-105 
-        duration-100 font-medium text-3xl text-white"
+                            className="py-8 text-3xl font-medium text-white duration-100 cursor-pointer hover:scale-105"
                         >
-                            <Link
-                                onClick={() => setIcon(!icon)}
-                                to={name}
-                                smooth
-                                duration={500}
-                            >
-                                {name}
-                            </Link>
+                            {path ? (
+                                <RouterLink to={path}>{name}</RouterLink>
+                            ) : (
+                                <Link
+                                    onClick={() => setIcon(!icon)}
+                                    to={name}
+                                    smooth
+                                    duration={500}
+                                >
+                                    {name}
+                                </Link>
+                            )}
                         </li>
                     ))}
                 </ul>
