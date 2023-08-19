@@ -8,7 +8,7 @@ import SubscriberRouter from './Subscriber/SubscriberRouter.js';
 import HomeOwnerRouter from './HomeOwner/HomeOwnerRoutes.js';
 import { createMessage } from './Messaging.js';
 
-dotenv.config({path: "./.env.local"});
+dotenv.config({ path: './.env.local' });
 
 const allowedOrigins = ['http://localhost:5173', undefined]; // allow undefined origin from Postman and curl
 const corsOps = {
@@ -49,6 +49,7 @@ const start = async () => {
 app.use('/alert', (req, res) => {
     // Do our "algorithm" and find cities
     // get phonenumbers
+
     let people = {
         'Andy John': {
             phone: '+12262800252',
