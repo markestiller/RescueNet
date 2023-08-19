@@ -1,5 +1,5 @@
 import express from 'express';
-import { create, read } from './SubscriberController';
+import { create, read, update } from './SubscriberController.js';
 const SubscriberRouter = express.Router();
 
 SubscriberRouter.post('/', async (req, res) => {

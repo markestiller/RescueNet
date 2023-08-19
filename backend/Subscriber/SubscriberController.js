@@ -1,5 +1,5 @@
-import Cities from '../Cities/Cities';
-import Subscriber from './SubscriberSchema';
+import Cities from '../Cities/CitiesSchema.js';
+import Subscriber from './SubscriberSchema.js';
 
 async function create(subscriberObject, res) {
     try {

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
-import SubscriberRouter from './Subscriber/SubscriberRoute';
+import SubscriberRouter from './Subscriber/SubscriberRouter.js';
 
 const allowedOrigins = ['http://localhost:5173'];
 const corsOps = {
