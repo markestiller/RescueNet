@@ -8,7 +8,7 @@ import SubscriberRouter from './Subscriber/SubscriberRouter.js';
 import HomeOwnerRouter from './HomeOwner/HomeOwnerRoutes.js';
 import { createMessage } from './Messaging.js';
 
-dotenv.config({ path: './.env.local' });
+dotenv.config({path: "./.env.local"});
 
 const allowedOrigins = ['http://localhost:5173', undefined]; // allow undefined origin from Postman and curl
 const corsOps = {
