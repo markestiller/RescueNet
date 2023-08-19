@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link } from 'react-scroll';
 
 const Navbar = () => {
     let links = [
@@ -11,14 +12,21 @@ const Navbar = () => {
     let [icon, setIcon] = useState(false);
 
     return (
-        <div className="fixed flex justify-between items-center w-full h-20 z-10 bg-black">
-            <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-start via-via to-end px-4">
+        <div
+            name="Navbar"
+            className="fixed flex justify-between items-center w-full h-20 z-10 bg-black"
+        >
+            <div className="animate-pulse text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-start via-via to-end px-4">
                 WildFire
             </div>
             <div>
                 <ul className="hidden md:flex flex-row">
                     {links.map(({ id, name }) => (
-                        <li key={id} className=" font-bold text-white px-4">
+                        <li
+                            key={id}
+                            className="cursor-pointer font-bold text-white hover:scale-105 hover:rotate-12 
+                        duration-100 font-medium px-4"
+                        >
                             {name}
                         </li>
                     ))}
@@ -30,6 +38,26 @@ const Navbar = () => {
             >
                 {icon ? <FaTimes size={20} /> : <FaBars size={20} />}
             </div>
+            {icon && (
+                <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen  bg-black">
+                    {links.map(({ id, name }) => (
+                        <li
+                            key={id}
+                            className="cursor-pointer py-8 hover:scale-105 
+        duration-100 font-medium text-3xl text-white"
+                        >
+                            <Link
+                                onClick={() => setIcon(!icon)}
+                                to={name}
+                                smooth
+                                duration={500}
+                            >
+                                {name}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
