@@ -9,7 +9,7 @@ const Footer = () => {
         >
             <div className="flex-grow">{/* Your content here */}</div>
             <Wave
-                fill="#0f172a"
+                fill="#000000"
                 paused={false}
                 options={{
                     height: 10,
@@ -19,7 +19,7 @@ const Footer = () => {
                 }}
                 className="w-full"
             />
-            <div className="bg-gray-900 py-8 text-center text-white">
+            <div className="bg-black py-8 text-center text-white">
                 <div className="text-4xl font-bold mb-4">Drop Us A Line</div>
                 <div className="flex gap-6 mb-4 cursor-pointer items-center justify-center">
                     <div>About</div>
