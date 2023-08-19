@@ -17,6 +17,6 @@ const CitiesModel = Schema({
     },
 });
 
-const Cities = mongoose.model('HomeOwner', CitiesModel);
+const Cities = mongoose.model('Cities', CitiesModel);
 
 export default Cities;
