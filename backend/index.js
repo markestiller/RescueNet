@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import SubscriberRouter from './Subscriber/SubscriberRouter.js';
 import HomeOwnerRouter from './HomeOwner/HomeOwnerRoutes.js';
+import { createMessage } from './Messaging.js';
 
 dotenv.config({ path: './.env.local' });
 
@@ -46,7 +47,18 @@ const start = async () => {
 };
 
 app.use('/alert', (req, res) => {
-    console.log('FIRE Alert');
+    // Do our "algorithm" and find cities
+    // get phonenumbers
+    let people = {
+        'Andy John': {
+            phone: '+12262800252',
+            city: 'San Francisco',
+        },
+    };
+
+    Object.entries(people).forEach(([key, value]) => {
+        createMessage(key, value.phone, value.city);
+    });
     res.status(202).send('Alert received');
 });
 app.use('/api/subscriber', SubscriberRouter);
