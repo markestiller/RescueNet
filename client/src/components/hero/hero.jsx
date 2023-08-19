@@ -1,6 +1,5 @@
 import React from 'react';
 
-<<<<<<< HEAD
 const Hero = () => {
     return (
         <div id="about" className="grid grid-cols-1 lg:grid-cols-2 h-screen">
@@ -60,13 +59,6 @@ const Hero = () => {
                         loading="lazy"
                     />
                 </div>
-=======
-const hero = () => {
-    return (
-        <div name="Home" className="flex w-full h-screen items-center bg-black">
-            <div className="text-7xl font-bold text-transparent justify-center items-center bg-clip-text bg-gradient-to-r from-start via-via to-end px-4">
-                AAAAAAAAAAAAAAAAHHH
->>>>>>> ca33a95c83ce9518f36f7e36af5fe4e96adc20b9
             </div>
         </div>
     );
