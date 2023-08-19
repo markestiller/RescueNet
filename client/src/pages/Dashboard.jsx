@@ -1,3 +1,5 @@
+import appreciation from '../assets/appreciation.svg';
+
 export default function Dashboard() {
     const users = [
         {
@@ -39,7 +41,7 @@ export default function Dashboard() {
     let user = users[0];
 
     return (
-        <div className="w-full">
+        <div className="w-full h-screen">
             <div
                 className="absolute inset-x-0 -top-40 -z-10  overflow-hidden blur-3xl sm:-top-80"
                 aria-hidden="true"
@@ -53,7 +55,7 @@ export default function Dashboard() {
                 ></div>
             </div>
             <div className="flex flex-col items-center p-8">
-                <h1 className="text-2xl font-semibold">
+                <h1 className="text-4xl font-semibold">
                     Welcome back,{' '}
                     <span className="bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text text-transparent">
                         {user.firstname}
@@ -79,7 +81,7 @@ export default function Dashboard() {
                     {/* Add more columns here */}
 
                     {/* Account Information */}
-                    <div className=" bg-white p-4 border rounded-lg shadow-sm ">
+                    <div className=" bg-white p-4 border rounded-lg shadow-sm relative pb-10">
                         <h2 className="text-lg font-semibold mb-2 items-center">
                             Account
                         </h2>
@@ -90,11 +92,13 @@ export default function Dashboard() {
                         <p className="text-gray-700">Mobile: {user.mobile}</p>
                         <p className="text-gray-700">Address: {user.address}</p>
                         {/* Add more user information fields as needed */}
-                        <div className="pt-4">Edit</div>
+                        <div className="absolute bottom-0 right-0 p-2 text-sm text-orange-500">
+                            Edit
+                        </div>
                     </div>
 
                     {/* Subscribed Status */}
-                    <div className="bg-white p-4 border rounded-lg shadow-sm">
+                    <div className="bg-white p-4 border rounded-lg shadow-sm relative">
                         <h2 className="text-lg font-semibold mb-2">Status</h2>
 
                         <p className="text-gray-700">
@@ -102,14 +106,23 @@ export default function Dashboard() {
                                 ? 'Subscribed ✅'
                                 : 'Not Subscribed ❌'}
                         </p>
+                        <div className="absolute bottom-0 right-0 p-2 text-sm text-orange-500">
+                            Manage
+                        </div>
                     </div>
 
                     {/* Balance */}
-                    <div className="bg-white p-4 border rounded-lg shadow-sm">
+                    <div className="bg-white p-4 border rounded-lg shadow-sm relative">
                         <h2 className="text-lg font-semibold mb-2">Balance</h2>
                         <p className="text-gray-700">${user.balance}</p>
+                        <div className="absolute bottom-0 right-0 p-2 text-sm text-orange-500">
+                            More
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div className="items-center w-1/3 h-1/3">
+                <img src={appreciation} />
             </div>
         </div>
     );
