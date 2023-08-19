@@ -4,10 +4,9 @@ import { FaArrowRight } from 'react-icons/fa';
 const Hero = () => {
     return (
         <div
-            id="about"
+            id="Home"
             className="grid grid-cols-1 lg:grid-cols-2 h-screen relative"
         >
-            {/* Blue and Purple Gradient Div */}
             <div
                 className="absolute inset-x-0 -top-40 -z-10  overflow-hidden blur-3xl sm:-top-80"
                 aria-hidden="true"

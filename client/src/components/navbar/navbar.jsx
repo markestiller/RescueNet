@@ -27,7 +27,9 @@ const Navbar = () => {
                             className="cursor-pointer font-bold text-orange-500 hover:scale-105 hover:rotate-12 
                         duration-100 px-4"
                         >
-                            {name}
+                            <Link to={name} smooth duration={500}>
+                                {name}
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -39,7 +41,7 @@ const Navbar = () => {
                 {icon ? <FaTimes size={20} /> : <FaBars size={20} />}
             </div>
             {icon && (
-                <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen  bg-black">
+                <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen  bg-red-200 ">
                     {links.map(({ id, name }) => (
                         <li
                             key={id}
