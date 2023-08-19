@@ -1,20 +1,28 @@
-import './App.css';
-import Navbar from './components/navbar/navbar';
-import Footer from './components/footer/footer';
-import Hero from './components/hero/hero';
-import About from './components/about/about';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Main from './pages/Main';
+import Auth from './pages/Auth';
+import Dashboard from './pages/Dashboard';
+import NotFound from './pages/NotFound';
 
-import React from 'react';
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Main />,
+    },
+    {
+        path: '/auth',
+        element: <Auth />,
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
+    },
+    {
+        path: '*',
+        element: <NotFound />,
+    },
+]);
 
-const App = () => {
-    return (
-        <div className="w-full">
-            <Navbar />
-            <Hero />
-            <About />
-            <Footer />
-        </div>
-    );
-};
-
-export default App;
+export default function App() {
+    return <RouterProvider router={router} />;
+}

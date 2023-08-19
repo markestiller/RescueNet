@@ -14,9 +14,9 @@ const Navbar = () => {
     return (
         <div
             name="Navbar"
-            className="fixed flex justify-between items-center w-full h-20 z-10 bg-black"
+            className="fixed flex justify-between items-center w-full h-20 z-10 bg-red-200"
         >
-            <div className="animate-pulse text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-start via-via to-end px-4">
+            <div className="animate-pulse text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 px-4">
                 WildFire
             </div>
             <div>
@@ -24,8 +24,8 @@ const Navbar = () => {
                     {links.map(({ id, name }) => (
                         <li
                             key={id}
-                            className="cursor-pointer font-bold text-white hover:scale-105 hover:rotate-12 
-                        duration-100 font-medium px-4"
+                            className="cursor-pointer font-bold text-orange-500 hover:scale-105 hover:rotate-12 
+                        duration-100 px-4"
                         >
                             {name}
                         </li>
