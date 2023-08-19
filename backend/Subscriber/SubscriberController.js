@@ -11,7 +11,8 @@ async function create(subscriberObject, res) {
                 city: subscriberObject.city,
                 province: subscriberObject.province,
             },
-            { $push: { subscribers: subscriber._id } }
+            { $push: { subscribers: subscriber._id } },
+            { upsert: true }
         );
         res.status(201).json({ subscriber });
     } catch (error) {
