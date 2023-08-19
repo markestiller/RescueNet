@@ -27,3 +27,5 @@ async function getNearbyCities(id = 'Q24639') {
 }
 
 getNearbyCities('Q24639');
+
+export default getNearbyCities;

@@ -7,6 +7,10 @@ import mongoose from 'mongoose';
 import SubscriberRouter from './Subscriber/SubscriberRouter.js';
 import HomeOwnerRouter from './HomeOwner/HomeOwnerRoutes.js';
 import { createMessage } from './Messaging.js';
+import Cities from './Cities/CitiesSchema.js';
+import Subscriber from './Subscriber/SubscriberSchema.js';
+import HomeOwner from './HomeOwner/HomeOwnerSchema.js';
+import getNearbyCities from './NearbyCities.js';
 
 dotenv.config({ path: './.env.local' });
 
@@ -46,20 +50,50 @@ const start = async () => {
     }
 };
 
-app.use('/alert', (req, res) => {
-    // Do our "algorithm" and find cities
-    // get phonenumbers
+app.post('/alert', async (req, res) => {
+    let evacutationCity = req.body.city;
 
-    let people = {
-        'Andy John': {
-            phone: '+12262800252',
-            city: 'San Francisco',
-        },
-    };
-
-    Object.entries(people).forEach(([key, value]) => {
-        createMessage(key, value.phone, value.city);
+    // * Subscribers
+    // Find all individuals in affected city
+    let cityObject = await Cities.findOne({ city: evacutationCity }).exec();
+    let subscribers = cityObject?.subscribers;
+    let subscribedPeople = [];
+    subscribers?.forEach(async (subscriber) => {
+        // Get their data from Subscriber collection and add to our array
+        let subscribedPerson = await Subscriber.findOne({
+            _id: subscriber,
+        }).exec();
+        subscribedPeople.push(subscribedPerson);
     });
+
+    // Now we have all the subscribers in the affected region
+    // * Homeowners
+    // First find all nearby cities
+    let nearbyCities = await getNearbyCities(); // TODO Andy add the city ID here
+
+    // Find all homeowners in these nearby cities
+    let homeowners = [];
+    nearbyCities.forEach(async (city) => {
+        let nearbyCity = await Cities.findOne({ city: city }).exec();
+        let cityHomeowners = nearbyCity?.homeowners;
+        cityHomeowners?.forEach(async (homeowner) => {
+            let homeownerObject = await HomeOwner.findOne({
+                _id: homeowner,
+            }).exec();
+            homeowners.push(homeownerObject);
+        });
+    });
+    console.log(homeowners);
+    /* 
+
+    // Send messages
+    Object.entries(people).forEach(([key, value]) => {
+        
+                
+        setTimeout(function() {
+        createMessage(key, value.phone, value.city);
+        }, 1000);
+    }); */
     res.status(202).send('Alert received');
 });
 app.use('/api/subscriber', SubscriberRouter);
