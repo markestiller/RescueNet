@@ -2,10 +2,13 @@ import React from 'react';
 
 const Hero = () => {
     return (
-        <div id="about" className="grid grid-cols-1 lg:grid-cols-2 h-screen">
+        <div
+            id="About"
+            className="grid grid-cols-1 lg:grid-cols-2 h-screen bg-red-100"
+        >
             <div className="flex items-center justify-center lg:justify-start">
                 <div className="mx-10 mt-10">
-                    <h1 className="text-5xl font-extrabold leading-tight">
+                    <h1 className="text-4xl font-extrabold leading-tight">
                         <span className="bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text text-transparent">
                             Resilience{' '}
                         </span>
