@@ -54,7 +54,7 @@ const Hero = () => {
                         <button className="mb-2">
                             <a
                                 href="#_"
-                                className="px-8 py-2.5 rounded-full text-black font-medium inline-block bg-white border-black  hover:border-orange-500 border-[3px] shadow-xl"
+                                className="px-8 py-2.5 rounded-full text-black font-medium inline-block bg-white border-black  hover:border-orange-500 hover:text-orange-500 border-[3px] shadow-xl"
                             >
                                 <span className="relative">Login</span>
                             </a>
