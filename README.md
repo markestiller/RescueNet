@@ -1,5 +1,5 @@
 # RescueNet
-![Any Text You Like](https://img.shields.io/badge/any_text-you_like-blue)
+![Ensurance not Insurance!]([https://img.shields.io/badge/Ensurance%20not%20Insurance-8A2BE2])
 
 ## 💡 Inspiration💡
 
