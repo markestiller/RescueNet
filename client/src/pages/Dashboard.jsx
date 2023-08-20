@@ -131,8 +131,7 @@ function initiatePaymentRequest() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            amount: 1000,
-            currency: 'NGN',
+            userId: localStorage.getItem('userId'),
         }),
     });
 }

@@ -9,6 +9,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@circle-fin/circle-sdk": "^2.1.0",
         "react-wavify": "^1.8.3"
     }
 }
