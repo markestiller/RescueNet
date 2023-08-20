@@ -86,9 +86,6 @@ app.post('/alert', async (req, res) => {
             + parseInt(person.occupants);
         }
     })
-    // console.log(pairedHousing)
-    // console.log("here")
-    // Send messages
 
     let i = 0;
     let intervalId = setInterval(() => {
@@ -97,14 +94,30 @@ app.post('/alert', async (req, res) => {
         i++;
         if (i == pairedHousing.length) {
             clearInterval(intervalId)
+            secondInterval(pairedHousing, res)
         }
 
         createMessage(subscriber.phoneNumber, messageText)
 
     }, 5000);
-
-    res.status(202).send('Alert received');
 });
+
+function secondInterval(pairedHousing, res) {
+    let i = 0;
+    let intervalId = setInterval(() => {
+        const {subscriber, homeowner} = pairedHousing[i];
+        const messageText =  `EMERGENCY: ${subscriber.firstName} will be housed in your building at ${homeowner.address}, ${homeowner.city}, ${homeowner.province}. Contact: ${homeowner.phoneNumber}`
+        i++;
+        if (i == pairedHousing.length) {
+            clearInterval(intervalId)
+            res.status(202).send('Alert received');
+        }
+
+        createMessage(subscriber.phoneNumber, messageText)
+
+    }, 5000);
+}
+
 app.use('/api/subscriber', SubscriberRouter);
 app.use('/api/homeowner', HomeOwnerRouter);
 
