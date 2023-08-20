@@ -31,7 +31,7 @@ const Hero = () => {
                         </span>{' '}
                         in Transition. <br />
                         <span className="text-transparent bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text">
-                            Stay Secure
+                            Security
                         </span>{' '}
                         during Drastic Circumstances.
                     </h1>

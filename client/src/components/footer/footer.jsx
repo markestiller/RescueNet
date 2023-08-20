@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="flex flex-col w-full mt-12">
             <div className=" py-6 md:py-8 text-center bg-gray-50">
                 <div className="text-xl md:text-4xl font-bold mb-2 md:mb-4 text-black">
-                    WildFire
+                    RescueNet
                 </div>
                 <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-2 cursor-pointer items-center justify-center text-black">
                     <div>Devpost</div>
