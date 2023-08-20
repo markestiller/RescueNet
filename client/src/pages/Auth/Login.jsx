@@ -3,55 +3,10 @@ import Navbar from '../../components/navbar/navbar';
 import { useNavigate } from 'react-router-dom';
 
 const inputs = {
-    firstName: {
-        type: 'text',
-        placeholder: 'First Name',
-        label: 'First Name',
-    },
-    lastName: {
-        type: 'text',
-        placeholder: 'Last Name',
-        label: 'Last Name',
-    },
-    address: {
-        type: 'text',
-        placeholder: '32 Wildfire Drive',
-        label: 'Address',
-    },
-    city: {
-        type: 'text',
-        placeholder: 'Toronto',
-        label: 'City',
-    },
-    province: {
-        type: 'text',
-        placeholder: 'ON',
-        label: 'Province',
-    },
-    postalCode: {
-        type: 'text',
-        placeholder: 'M1M 1M1',
-        label: 'Postal Code',
-    },
-    age: {
-        type: 'text',
-        placeholder: '18',
-        label: 'Age',
-    },
     phoneNumber: {
         type: 'text',
         placeholder: '4161234567',
         label: 'Phone Number',
-    },
-    occupants: {
-        type: 'number',
-        placeholder: '0',
-        label: 'Occupants',
-    },
-    capacity: {
-        type: 'number',
-        placeholder: '0',
-        label: 'Capacity',
     },
     password: {
         type: 'password',
@@ -117,9 +72,8 @@ export default function HomeownerAuth() {
             <div className="flex flex-col items-center gap-5 p-5 rounded-lg">
                 <h1 className="mb-8 text-2xl font-bold">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
-                        Homeowner
-                    </span>{' '}
-                    Authentication
+                        Login
+                    </span>
                 </h1>
 
                 {/* Input fields */}
@@ -144,11 +98,9 @@ export default function HomeownerAuth() {
                         </>
                     ))}
                 </form>
-                <div className="px-4 py-2 my-4 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-md hover:scale-105 transition">
-                    <button onClick={() => sendData(homeownerData, navigate)}>
-                        Submit
-                    </button>
-                </div>
+                <button onClick={() => sendData(homeownerData, navigate)}>
+                    Submit
+                </button>
             </div>
         </div>
     );
@@ -156,8 +108,8 @@ export default function HomeownerAuth() {
 
 function sendData(homeownerData, navigate) {
     console.log(homeownerData);
-    fetch(import.meta.env.VITE_BACKEND + '/api/homeowner', {
-        method: 'POST',
+    fetch(import.meta.env.VITE_BACKEND + '/api/homeowner' , {
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -165,10 +117,10 @@ function sendData(homeownerData, navigate) {
     })
         .then((response) => response.json())
         .then((data) => {
+            console.log(data);
             if (data.error) {
                 // do smth
             } else {
-                data = data.created;
                 localStorage.setItem('firstName', data.firstName);
                 localStorage.setItem('lastName', data.lastName);
                 localStorage.setItem('address', data.address);
