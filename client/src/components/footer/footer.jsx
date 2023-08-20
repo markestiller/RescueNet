@@ -26,13 +26,17 @@ const Footer = () => {
                     Drop Us A Line
                 </div>
                 <div className="flex flex-col md:flex-row gap-3 md:gap-6 mb-4 cursor-pointer items-center justify-center text-black">
-                    <div>About</div>
+                    <div id="About">About</div>
                     <div>Services</div>
                     <div>Projects</div>
                     <div>Blog</div>
                 </div>
                 <div className="text-xs md:text-sm text-black">
                     Copyright © 2023. All rights reserved.
+                </div>
+                <div className="text-xs md:text-sm text-black underline underline-offset-1 py-1">
+                    Created by Mohammad Anwar, Mark Estiller, Andy Liu, and
+                    Abrar Murad
                 </div>
             </div>
         </div>
