@@ -53,7 +53,7 @@ const SubscriberSchema = Schema({
     isHoused: {
         type: Boolean,
         required: true,
-        default: true
+        default: false
     }
 });
 
