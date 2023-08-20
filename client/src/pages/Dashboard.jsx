@@ -64,7 +64,7 @@ export default function Dashboard() {
             <div className="flex flex-col items-center mt-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {/* Account Information */}
-                    <div className="relative p-4 pb-10 bg-white border rounded-lg shadow-md text-xl">
+                    <div className="relative p-4 pb-10 text-xl bg-white border rounded-lg shadow-md">
                         <h2 className="items-center mb-2 text-2xl font-semibold">
                             Account
                         </h2>
@@ -92,7 +92,7 @@ export default function Dashboard() {
                     <div className="relative p-20 bg-white rounded-lg shadow-md">
                         <h2 className="mb-2 text-2xl font-semibold">Status</h2>
 
-                        <p className="text-gray-700 text-xl">
+                        <p className="text-xl text-gray-700">
                             {userData?.isSubscribed
                                 ? 'Subscribed ✅'
                                 : 'Not Subscribed ❌'}
@@ -103,13 +103,12 @@ export default function Dashboard() {
                     </div>
 
                     {/* Balance */}
-                    {/*   <div className="relative p-4 bg-white border rounded-lg shadow-sm">
-                        <h2 className="mb-2 text-lg font-semibold">Balance</h2>
-                        <p className="text-gray-700">${userData?.balance}</p>
-                        <div className="absolute bottom-0 right-0 p-2 text-sm text-orange-500">
-                            More
-                        </div>
-                    </div> */}
+                    <div className="relative p-4 bg-white border rounded-lg shadow-sm">
+                        <h2 className="mb-2 text-lg font-semibold">Payments</h2>
+                        <button onClick={initiatePaymentRequest}>
+                            Initiate Payment
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className="flex items-center justify-center pt-10">
@@ -122,4 +121,18 @@ export default function Dashboard() {
             </div>
         </div>
     );
+}
+
+function initiatePaymentRequest() {
+    // POST request
+    fetch(import.meta.env.VITE_BACKEND + '/api/payment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            amount: 1000,
+            currency: 'NGN',
+        }),
+    });
 }
