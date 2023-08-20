@@ -19,7 +19,7 @@ async function createCryptoPayment(req, res) {
 
     const reqBody = {
         amount: {
-            amount: '1.00',
+            amount: '0.01',
             currency: 'USD',
         },
         settlementCurrency: 'USD',
@@ -34,7 +34,7 @@ async function createCryptoPayment(req, res) {
     const resp = await circle.cryptoPaymentIntents.createPaymentIntent(reqBody);
     console.log(resp.data);
 
-    pollPaymentIntent(resp.data.data.id, userId);
+    pollPaymentIntent(resp.data.data.id, userId, res);
 }
 
 // Create promise that gets resolved in time milliseconds
@@ -50,7 +50,7 @@ async function getPaymentIntent(paymentIntentId) {
     return resp.data;
 }
 
-async function pollPaymentIntent(paymentIntentId, userId) {
+async function pollPaymentIntent(paymentIntentId, userId, res) {
     const pollInterval = 500; // Interval (in ms) by which to poll
 
     let resp = undefined;
@@ -63,8 +63,9 @@ async function pollPaymentIntent(paymentIntentId, userId) {
     }
     console.log(resp);
     let paymentId = resp.data.id;
-    Subscriber.findByIdAndUpdate(userId, { paymentId: paymentId }).exec();
+    await Subscriber.findByIdAndUpdate(userId, { paymentId: paymentId }).exec();
     console.log(resp.data?.paymentMethods[0].address);
+    res.status(200).json({ address: resp.data?.paymentMethods[0].address });
 }
 
 export default createCryptoPayment;
