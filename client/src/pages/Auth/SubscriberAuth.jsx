@@ -139,9 +139,11 @@ export default function SubscriberAuth() {
                         </>
                     ))}
                 </form>
-                <button onClick={() => sendData(subscriberData, navigate)}>
-                    Submit
-                </button>
+                <div className="px-4 py-2 my-4 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-md hover:scale-105 transition ">
+                    <button onClick={() => sendData(subscriberData, navigate)}>
+                        Submit
+                    </button>
+                </div>
             </div>
         </div>
     );
