@@ -62,8 +62,8 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className="z-10 flex items-center justify-center mx-10 lg:justify-end">
-                <div className="h-80 lg:h-auto">
+            <div className="hidden lg:flex items-center justify-center px-4 lg:px-0">
+                <div className="h-80 lg:h-auto ">
                     <img src="/images/undraw.svg" className="-z-50" />
                 </div>
             </div>
