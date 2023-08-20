@@ -1,5 +1,5 @@
 # RescueNet
-![Ensurance not Insurance](https://img.shields.io/badge/Ensurance%20not%Insurance-8A2BE2)
+![ensurance not insurance](https://img.shields.io/badge/ensurance%20not%20insurance-8A2BE2)
 
 ## 🖥️ Tech Stack 🖥️
 Built with ❤️ &
