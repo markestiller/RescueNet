@@ -146,7 +146,7 @@ export default function HomeownerAuth() {
             <div className="flex flex-col items-center gap-5 p-5 rounded-lg">
                 <h1 className="text-2xl font-bold mb-8">
                     <span className=" text-transparent  bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
-                        Subscriber
+                        Homeowner
                     </span>{' '}
                     Authentication
                 </h1>

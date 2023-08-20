@@ -47,11 +47,6 @@ const inputs = {
         placeholder: '0',
         label: 'Occupants',
     },
-    capacity: {
-        type: 'number',
-        placeholder: '0',
-        label: 'Capacity',
-    },
     password: {
         type: 'password',
         placeholder: 'Password',
@@ -68,7 +63,7 @@ export default function SubscriberAuth() {
         postalCode: '',
         age: '',
         phoneNumber: '',
-        occupants: '0',
+        occupants: '',
         password: '',
     });
 
