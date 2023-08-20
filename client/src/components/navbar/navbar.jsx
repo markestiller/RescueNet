@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link, animateScroll } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom'; // This routes to other pages
 const Navbar = () => {
     const links = [
@@ -8,7 +8,7 @@ const Navbar = () => {
         { id: 2, name: 'About' },
         { id: 3, name: 'Contact' },
         { id: 4, name: 'Join', path: '/auth' },
-        { id: 4, name: 'Dashboard', path: '/dashboard' },
+        { id: 5, name: 'Dashboard', path: '/dashboard' },
     ];
 
     const [icon, setIcon] = useState(false);
