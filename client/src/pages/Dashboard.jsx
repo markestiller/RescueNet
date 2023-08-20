@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import appreciation from '../assets/appreciation.svg';
+import Navbar from '../components/navbar/navbar';
 
 export default function Dashboard() {
     const [userData, setUserData] = useState({});
@@ -26,6 +27,7 @@ export default function Dashboard() {
 
     return (
         <div className="relative w-full h-screen">
+            <Navbar />
             <div
                 className="absolute inset-x-0 overflow-hidden -top-40 -z-10 blur-3xl sm:-top-80"
                 aria-hidden="true"
@@ -47,7 +49,6 @@ export default function Dashboard() {
                     👋
                 </h1>
             </div>
-
             <div
                 className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10  overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
                 aria-hidden="true"
