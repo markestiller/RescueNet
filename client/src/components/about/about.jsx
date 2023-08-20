@@ -39,7 +39,7 @@ const About = () => {
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
     return (
         <div name="About" className="w-full h-screen p-4 md:p-8 lg:p-16">
-            <div className="grid grid-cols-1 mt-4 mb-20 lg:grid-cols-2">
+            <div className="grid grid-cols-1 mt-8 mb-20 lg:grid-cols-2">
                 <div>
                     <img
                         src="/images/search.svg"
@@ -48,7 +48,7 @@ const About = () => {
                     />
                 </div>
                 <div>
-                    <div className="flex items-center justify-center mb-10 text-5xl font-bold text-transparent bg-gradient-to-tr from-blue-500 to-cyan-500 bg-clip-text">
+                    <div className="flex items-center justify-center sm:mt-8 mb-10 text-5xl font-bold text-transparent bg-gradient-to-tr from-blue-500 to-cyan-500 bg-clip-text">
                         Mission Statement
                     </div>
                     <div className="flex items-center justify-center max-w-screen-md mx-auto text-justify lg:text-lg">
