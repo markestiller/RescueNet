@@ -36,7 +36,7 @@ export default function Auth() {
                     <Link to="/auth/subscriber">
                         <div className="flex flex-col items-center justify-center p-16 text-center text-white rounded-md cursor-pointer shadow-xl bg-red-500 hover:border-black hover:border-4 hover:text-red-500 hover:bg-white transition-all">
                             <h1>Subscriber</h1>
-                            <h1>Subscribe to Life Insurance</h1>
+                            <h2>Get quick ensurance with us</h2>
                             <br />
                             <FaPerson size={50} />
                         </div>
@@ -45,7 +45,7 @@ export default function Auth() {
                     <Link to="/auth/homeowner">
                         <div className="flex flex-col items-center justify-center p-16 text-center text-white rounded-md cursor-pointer shadow-xl bg-blue-500 hover:border-black hover:border-4 hover:text-blue-500 hover:bg-white transition-all">
                             <h1>Homeowner</h1>
-                            <h1>Join as a Partner (Homeowner)</h1>
+                            <h2>Join as a Partner (Homeowner)</h2>
                             <br />
                             <FaHome size={50} />
                         </div>
