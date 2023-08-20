@@ -23,7 +23,7 @@ const cardData = [
         title: 'Not A Dent In Your Wallet',
         description:
             'We ensure you more than insurance at a lower rate. Sounds like a win to us.',
-        badge: 'Cheap',
+        badge: 'Frugal',
     },
     {
         title: 'Track Your Start - End Point Without Hassle',
