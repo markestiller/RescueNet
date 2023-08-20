@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div
             name="Contact"
-            className="relative w-full min-h-screen flex flex-col mt-16 md:mt-80" // Adjust the mt value for mobile and larger screens
+            className="relative w-full min-h-screen flex flex-col md:mt-80" // Adjust the mt value for mobile and larger screens
         >
             <div className="flex-grow">{/* Your content here */}</div>
             <Wave

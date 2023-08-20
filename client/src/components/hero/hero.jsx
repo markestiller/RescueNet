@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
 
 const Hero = () => {
     return (
@@ -32,7 +31,7 @@ const Hero = () => {
                         </span>{' '}
                         in Transition. <br />
                         <span className="bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text text-transparent">
-                            Stay Secure
+                            Security
                         </span>{' '}
                         during Drastic Circumstances.
                     </h1>
