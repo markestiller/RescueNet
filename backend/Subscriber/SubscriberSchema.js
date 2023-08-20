@@ -12,7 +12,6 @@ const SubscriberSchema = Schema({
     address: {
         type: String,
         required: true,
-        unique: true,
     },
     city: {
         type: String,
