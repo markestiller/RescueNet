@@ -21,7 +21,7 @@ const Navbar = () => {
         >
             <RouterLink to="/">
                 <div className="px-4 text-4xl font-bold text-transparent animate-pulse bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
-                    WildFire
+                    RescueNet
                 </div>
             </RouterLink>
             <div>
