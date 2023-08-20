@@ -41,4 +41,16 @@ async function update(id, subscriberObject, res) {
     }
 }
 
-export { create, read, update };
+async function setEvacuated(id, res) {
+    try {
+        const subscriber = await Subscriber.findByIdAndUpdate(id, {
+            $set: { isHoused: true },
+        });
+
+        res.status(200).json({ subscriber }); // todo, return the updated guy
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+export { create, read, update, setEvacuated};
