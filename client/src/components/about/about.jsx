@@ -40,7 +40,7 @@ const About = () => {
     return (
         <div name="About" className="w-full h-screen p-4 md:p-8 lg:p-16">
             <div className="grid grid-cols-1 mt-8 mb-20 lg:grid-cols-2">
-                <div>
+                <div className="hidden lg:flex items-center justify-center px-4 lg:px-0">
                     <img
                         src="/images/search.svg"
                         className="pr-10  lg:object-cover -z-50"
@@ -74,7 +74,6 @@ const About = () => {
                     >
                         For Subscribers ➔
                     </AccordionHeader>
-
                     <AccordionBody className="text-black bg-gray-50">
                         <span className="text-3xl font-bold">Step 1</span>{' '}
                         <br />
