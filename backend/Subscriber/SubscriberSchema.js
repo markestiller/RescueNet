@@ -38,6 +38,7 @@ const SubscriberSchema = Schema({
     isAuthenticated: {
         type: String,
         required: true,
+        default: true
     },
     password: {
         type: String,
@@ -52,6 +53,7 @@ const SubscriberSchema = Schema({
     isHoused: {
         type: Boolean,
         required: true,
+        default: false
     }
 });
 

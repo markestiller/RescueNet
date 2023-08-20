@@ -38,19 +38,19 @@ const About = () => {
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
     return (
         <div name="About" className="w-full h-screen p-4 md:p-8 lg:p-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 mb-20 mt-4">
+            <div className="grid grid-cols-1 mt-4 mb-20 lg:grid-cols-2">
                 <div>
                     <img
                         src="/images/search.svg"
-                        className=" pr-10 lg:object-cover -z-50"
+                        className="pr-10  lg:object-cover -z-50"
                         loading="lazy"
                     />
                 </div>
                 <div>
-                    <div className="flex justify-center items-center text-5xl font-bold mb-10 bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                    <div className="flex items-center justify-center mb-10 text-5xl font-bold text-transparent bg-gradient-to-tr from-blue-500 to-cyan-500 bg-clip-text">
                         Mission Statement
                     </div>
-                    <div className="flex items-center justify-center max-w-screen-md mx-auto lg:text-lg text-justify">
+                    <div className="flex items-center justify-center max-w-screen-md mx-auto text-justify lg:text-lg">
                         We believe in a world where disaster doesn't have to
                         mean despair. A scenario where hurricanes, wildfires,
                         and unforeseen calamities aren't just met with panic,
@@ -69,23 +69,23 @@ const About = () => {
                 <Accordion open={open === 1}>
                     <AccordionHeader
                         onClick={() => handleOpen(1)}
-                        className="group text-4xl bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text text-transparent hover:text-black transition-colors duration-300"
+                        className="text-4xl text-transparent transition-colors duration-300 group bg-gradient-to-tr from-red-500 to-orange-500 bg-clip-text hover:text-black"
                     >
                         For Subscribers ➔
                     </AccordionHeader>
 
                     <AccordionBody className="text-black bg-gray-50">
-                        <span className="font-bold text-3xl">Step 1</span>{' '}
+                        <span className="text-3xl font-bold">Step 1</span>{' '}
                         <br />
                         Open a subscription account with us and choose the plan
                         that best suits your needs and situations along with
                         filling out our form.
                         <br /> <br />
-                        <span className="font-bold text-3xl">Step 2</span>{' '}
+                        <span className="text-3xl font-bold">Step 2</span>{' '}
                         <br />
                         Select your payment provider and pay in monthly or
                         annual installments. <br /> <br />
-                        <span className="font-bold text-3xl">Step 3</span>{' '}
+                        <span className="text-3xl font-bold">Step 3</span>{' '}
                         <br />
                         Follow our instructions when a disaster arises on our
                         dashboard, and arrive to quick safety through our
@@ -95,41 +95,41 @@ const About = () => {
                 <Accordion open={open === 2}>
                     <AccordionHeader
                         onClick={() => handleOpen(2)}
-                        className="group text-4xl bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text text-transparent hover:text-black transition-colors duration-300"
+                        className="text-4xl text-transparent transition-colors duration-300 group bg-gradient-to-tr from-blue-500 to-cyan-500 bg-clip-text hover:text-black"
                     >
                         For Homeowners ➔
                     </AccordionHeader>
                     <AccordionBody className="text-black bg-gray-50">
-                        <span className="font-bold text-2xl">Step 1</span>{' '}
+                        <span className="text-2xl font-bold">Step 1</span>{' '}
                         <br />
                         Open a homeowner account with us and choose the plan
                         that best suits your needs and situations along with
                         filling out our form.
                         <br /> <br />
-                        <span className="font-bold text-2xl">Step 2</span>{' '}
+                        <span className="text-2xl font-bold">Step 2</span>{' '}
                         <br />
                         Provide temporary housing to citizens impacted by
                         natural disasters in your area.
                         <br /> <br />
-                        <span className="font-bold text-2xl">Step 3</span>{' '}
+                        <span className="text-2xl font-bold">Step 3</span>{' '}
                         <br />
                         Cash out upon the completion of the stay by the family.
                     </AccordionBody>
                 </Accordion>
             </div>
-            <div className="container mx-auto p-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="container p-4 mx-auto">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                     {cardData.map((card, index) => (
                         <a
                             key={index}
                             href="#"
                             className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                         >
-                            <span class="bg-green-100 text-green-800 text-md font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                            <span className="bg-green-100 text-green-800 text-md font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
                                 {card.badge}
                             </span>
 
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white mt-2">
+                            <h5 className="mt-2 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 {card.title}
                             </h5>
                             <p className="font-normal text-gray-700 dark:text-gray-400">
