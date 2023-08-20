@@ -25,7 +25,6 @@ const SubscriberSchema = Schema({
         type: String,
         required: true,
     },
-
     age: {
         type: Number,
         required: true,
@@ -37,23 +36,25 @@ const SubscriberSchema = Schema({
     isAuthenticated: {
         type: String,
         required: true,
-        default: true
+        default: true,
     },
     password: {
         type: String,
         required: true,
     },
-
     occupants: {
         type: Number,
         required: true,
     },
-
     isHoused: {
         type: Boolean,
         required: true,
-        default: false
-    }
+        default: false,
+    },
+    paymentId: {
+        type: String,
+        required: false,
+    },
 });
 
 const Subscriber = mongoose.model('Subscriber', SubscriberSchema);
