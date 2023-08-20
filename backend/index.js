@@ -11,6 +11,7 @@ import Cities from './Cities/CitiesSchema.js';
 import Subscriber from './Subscriber/SubscriberSchema.js';
 import HomeOwner from './HomeOwner/HomeOwnerSchema.js';
 import getNearbyCities, { getQID } from './NearbyCities.js';
+import AdminRouter from './Admin/AdminRouter.js';
 
 dotenv.config({ path: './.env.local' });
 
@@ -120,5 +121,6 @@ function secondInterval(pairedHousing, res) {
 
 app.use('/api/subscriber', SubscriberRouter);
 app.use('/api/homeowner', HomeOwnerRouter);
+app.use('/api/admin', AdminRouter)
 
 start();

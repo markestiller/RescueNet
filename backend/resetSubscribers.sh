@@ -1,0 +1,1 @@
+curl -X PATCH http://localhost:3000/api/admin/reset
