@@ -1,5 +1,5 @@
 # RescueNet
-![Ensurance not Insurance!]([https://img.shields.io/badge/just%20the%20message-8A2BE2])
+![just the message](https://img.shields.io/badge/just%20the%20message-8A2BE2)
 
 ## 💡 Inspiration💡
 
