@@ -165,10 +165,10 @@ function sendData(homeownerData, navigate) {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             if (data.error) {
                 // do smth
             } else {
+                data = data.created;
                 localStorage.setItem('firstName', data.firstName);
                 localStorage.setItem('lastName', data.lastName);
                 localStorage.setItem('address', data.address);
@@ -178,6 +178,7 @@ function sendData(homeownerData, navigate) {
                 localStorage.setItem('age', data.age);
                 localStorage.setItem('phoneNumber', data.phoneNumber);
                 localStorage.setItem('occupants', data.occupants);
+                localStorage.setItem('userId', data._id);
                 navigate('/dashboard');
             }
         });
