@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link, animateScroll } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom'; // This routes to other pages
 const Navbar = () => {
     const links = [
         { id: 1, name: 'Home' },
         { id: 2, name: 'About' },
         { id: 3, name: 'Contact' },
-        { id: 4, name: 'Auth', path: '/auth' },
-        { id: 4, name: 'Dashboard', path: '/dashboard' },
+        { id: 4, name: 'Join', path: '/auth' },
+        { id: 5, name: 'Dashboard', path: '/dashboard' },
     ];
 
     const [icon, setIcon] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = () => {
                     {links.map(({ id, name, path }) => (
                         <li
                             key={id}
-                            className="px-4 font-bold text-orange-500 duration-100 cursor-pointer hover:scale-105 hover:rotate-12"
+                            className="px-4 font-bold text-black duration-100 cursor-pointer drop-shadow-xl hover:scale-105 "
                         >
                             {path ? (
                                 <RouterLink to={path}>{name}</RouterLink>

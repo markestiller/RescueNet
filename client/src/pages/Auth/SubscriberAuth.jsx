@@ -47,11 +47,6 @@ const inputs = {
         placeholder: '0',
         label: 'Occupants',
     },
-    capacity: {
-        type: 'number',
-        placeholder: '0',
-        label: 'Capacity',
-    },
     password: {
         type: 'password',
         placeholder: 'Password',
@@ -68,55 +63,24 @@ export default function SubscriberAuth() {
         postalCode: '',
         age: '',
         phoneNumber: '',
-        occupants: '0',
+        occupants: '',
         password: '',
     });
 
-    // eslint-disable-next-line react/prop-types
-    const TextInput = ({ unique, placeholder }) => {
-        return (
-            <input
-                className="w-64 h-10 p-2 border-2 border-gray-300 rounded-md outline-none"
-                type="text"
-                name={unique}
-                key={unique}
-                placeholder={placeholder}
-                value={subscriberData[unique]}
-                onChange={(event) => {
-                    setSubcriberData({
-                        ...subscriberData,
-                        [event.target.name]: event.target.value,
-                    });
-                }}
-            />
-        );
+    const changeHandler = (event) => {
+        setSubcriberData((prev) => ({
+            ...prev,
+            [event.target.name]: event.target.value,
+        }));
     };
-    // eslint-disable-next-line react/prop-types
-    const NumberInput = ({ unique, placeholder }) => {
-        return (
-            <input
-                className="w-32 h-10 p-2 border-2 border-gray-300 rounded-md outline-none"
-                type="number"
-                name={unique}
-                key={unique}
-                placeholder={placeholder}
-                value={subscriberData[unique]}
-                onChange={(event) => {
-                    setSubcriberData({
-                        ...subscriberData,
-                        [event.target.name]: event.target.value,
-                    });
-                }}
-            />
-        );
-    };
+
     return (
         <div className="flex flex-col w-ful">
             <Navbar />
 
             {/* Background Styling */}
             <div
-                className="absolute inset-x-0 -top-40 -z-10  overflow-hidden blur-3xl sm:-top-80"
+                className="absolute inset-x-0 overflow-hidden -top-40 -z-10 blur-3xl sm:-top-80"
                 aria-hidden="true"
             >
                 <div
@@ -144,29 +108,65 @@ export default function SubscriberAuth() {
 
             {/* Form */}
             <div className="flex flex-col items-center gap-5 p-5 rounded-lg">
-                <h1 className="text-2xl font-bold mb-8">
-                    <span className=" text-transparent  bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
+                <h1 className="mb-8 text-2xl font-bold">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
                         Subscriber
                     </span>{' '}
                     Authentication
                 </h1>
 
                 {/* Input fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <form className="grid grid-cols-1 gap-5 md:grid-cols-2">
                     {Object.entries(inputs).map(([key, value]) => (
-                        <div key={key}>
-                            <label className="block font-semibold mb-2">
+                        <>
+                            <label
+                                className="block mb-2 font-semibold"
+                                key={'label' + value.placeholder}
+                            >
                                 {value.label}
                             </label>
-                            {value.type === 'text' ? (
-                                <TextInput unique={key} {...value} />
-                            ) : (
-                                <NumberInput unique={key} {...value} />
-                            )}
-                        </div>
+                            <input
+                                key={key}
+                                className="w-64 h-10 p-2 border-2 border-gray-300 rounded-md outline-none"
+                                type={value.type}
+                                name={key}
+                                placeholder={value.placeholder}
+                                value={subscriberData[key]}
+                                onChange={changeHandler}
+                            />
+                        </>
                     ))}
-                </div>
+                </form>
+                <button onClick={() => sendData(subscriberData)}>Submit</button>
             </div>
         </div>
     );
+}
+
+function sendData(subscriberData) {
+    console.log(subscriberData);
+    fetch(import.meta.env.VITE_BACKEND + '/api/subscriber', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscriberData),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            if (data.error) {
+                // do smth
+            } else {
+                localStorage.setItem('firstName', data.firstName);
+                localStorage.setItem('lastName', data.lastName);
+                localStorage.setItem('address', data.address);
+                localStorage.setItem('city', data.city);
+                localStorage.setItem('province', data.province);
+                localStorage.setItem('postalCode', data.postalCode);
+                localStorage.setItem('age', data.age);
+                localStorage.setItem('phoneNumber', data.phoneNumber);
+                localStorage.setItem('occupants', data.occupants);
+            }
+        });
 }

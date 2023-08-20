@@ -47,7 +47,7 @@ const About = () => {
                     />
                 </div>
                 <div>
-                    <div className="flex justify-center items-center text-5xl font-bold mb-10 bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                    <div className="flex justify-center items-center text-5xl font-bold mb-10 bg-gradient-to-tr from-blue-500 to-cyan-500 bg-clip-text text-transparent">
                         Mission Statement
                     </div>
                     <div className="flex items-center justify-center max-w-screen-md mx-auto lg:text-lg text-justify">
@@ -95,7 +95,7 @@ const About = () => {
                 <Accordion open={open === 2}>
                     <AccordionHeader
                         onClick={() => handleOpen(2)}
-                        className="group text-4xl bg-gradient-to-tr from-cyan-500 to-blue-500 bg-clip-text text-transparent hover:text-black transition-colors duration-300"
+                        className="group text-4xl bg-gradient-to-tr from-blue-500 to-cyan-500 bg-clip-text text-transparent hover:text-black transition-colors duration-300"
                     >
                         For Homeowners ➔
                     </AccordionHeader>
