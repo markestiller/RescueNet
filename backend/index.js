@@ -11,6 +11,7 @@ import Cities from './Cities/CitiesSchema.js';
 import Subscriber from './Subscriber/SubscriberSchema.js';
 import HomeOwner from './HomeOwner/HomeOwnerSchema.js';
 import getNearbyCities, { getQID } from './NearbyCities.js';
+import AdminRouter from './Admin/AdminRouter.js';
 
 dotenv.config({ path: './.env.local' });
 
@@ -57,11 +58,8 @@ app.post('/alert', async (req, res) => {
     // Find all individuals in affected city
     let cityObject = await Cities.findOne({ city: evacutationCity }).exec();
     let subscriberIds = cityObject?.subscribers;
-    let subscribedPeople = (
-        await Promise.all(
-            subscriberIds.map((id) => Subscriber.findById(id).exec())
-        )
-    ).filter((value) => value != null);
+    let subscribedPeople = (await Promise.all(subscriberIds.map(id => Subscriber.findById(id).exec())))
+        .filter(value => value != null)
 
     // Now we have all the subscribers in the affected region
     // * Homeowners
@@ -69,55 +67,60 @@ app.post('/alert', async (req, res) => {
     const evacutationCityQID = getQID(evacutationCity);
     let nearbyCities = await getNearbyCities(evacutationCityQID);
 
-    const nearbyCityObjects = (
-        await Promise.all(
-            nearbyCities.map((city) => Cities.findOne({ city: city }).exec())
-        )
-    ).filter((value) => value != null);
-    const nearbyHomeownerIds = nearbyCityObjects
-        .map((cityObj) => cityObj.homeowners)
-        .flat(); // new ObjectId(...)
-    let allHomeownerObjects = await Promise.all(
-        nearbyHomeownerIds.map((id) => HomeOwner.findById(id))
-    );
+    const nearbyCityObjects = (await Promise.all(nearbyCities.map(city => Cities.findOne({ city: city }).exec())))
+        .filter(value => value != null)
+    const nearbyHomeownerIds = nearbyCityObjects.map(cityObj => cityObj.homeowners).flat() // new ObjectId(...)
+    let allHomeownerObjects = await Promise.all(nearbyHomeownerIds.map(id => HomeOwner.findById(id)))
 
     let pairedHousing = [];
 
-    subscribedPeople.forEach((person) => {
-        let firstAvailableHomeowner = allHomeownerObjects.find(
-            (homeObj) =>
-                parseInt(homeObj.capacity) - parseInt(person.occupants) >=
-                parseInt(homeObj.occupants)
-        );
+    subscribedPeople.forEach(person => {
+        let firstAvailableHomeowner = allHomeownerObjects.find(homeObj => 
+            parseInt(homeObj.capacity) - parseInt(person.occupants) >= parseInt(homeObj.occupants)
+            )
         if (firstAvailableHomeowner) {
             pairedHousing.push({
                 subscriber: person,
                 homeowner: firstAvailableHomeowner,
-            });
-            firstAvailableHomeowner.occupants =
-                parseInt(firstAvailableHomeowner.occupants) +
-                parseInt(person.occupants);
+            })
+            firstAvailableHomeowner.occupants = parseInt(firstAvailableHomeowner.occupants)
+            + parseInt(person.occupants);
         }
-    });
-    // console.log(pairedHousing)
-    // console.log("here")
-    // Send messages
+    })
 
     let i = 0;
     let intervalId = setInterval(() => {
-        const { subscriber, homeowner } = pairedHousing[i];
-        const messageText = `EMERGENCY: ${subscriber.firstName}, you MUST evacuate to ${homeowner.address}, ${homeowner.city}, ${homeowner.province}, and call ${homeowner.phoneNumber}`;
+        const {subscriber, homeowner} = pairedHousing[i];
+        const messageText =  `EMERGENCY: ${subscriber.firstName}, you MUST evacuate to ${homeowner.address}, ${homeowner.city}, ${homeowner.province}, and call ${homeowner.phoneNumber}`
         i++;
         if (i == pairedHousing.length) {
-            clearInterval(intervalId);
+            clearInterval(intervalId)
+            secondInterval(pairedHousing, res)
         }
 
-        createMessage(subscriber.phoneNumber, messageText);
-    }, 5000);
+        createMessage(subscriber.phoneNumber, messageText)
 
-    res.status(202).send('Alert received');
+    }, 5000);
 });
+
+function secondInterval(pairedHousing, res) {
+    let i = 0;
+    let intervalId = setInterval(() => {
+        const {subscriber, homeowner} = pairedHousing[i];
+        const messageText =  `EMERGENCY: ${subscriber.firstName} will be housed in your building at ${homeowner.address}, ${homeowner.city}, ${homeowner.province}. Contact: ${homeowner.phoneNumber}`
+        i++;
+        if (i == pairedHousing.length) {
+            clearInterval(intervalId)
+            res.status(202).send('Alert received');
+        }
+
+        createMessage(subscriber.phoneNumber, messageText)
+
+    }, 5000);
+}
+
 app.use('/api/subscriber', SubscriberRouter);
 app.use('/api/homeowner', HomeOwnerRouter);
+app.use('/api/admin', AdminRouter)
 
 start();
