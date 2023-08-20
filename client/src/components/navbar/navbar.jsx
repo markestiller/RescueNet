@@ -6,8 +6,8 @@ const Navbar = () => {
     let location = useLocation();
     const links = [
         { id: 1, name: 'Home', path: '/' },
-        location === '/' && { id: 2, name: 'About' },
-        location === '/' && { id: 3, name: 'Contact' },
+        // location === '/' && { id: 2, name: 'About' },
+        // location === '/' && { id: 3, name: 'Contact' },
         { id: 4, name: 'Join', path: '/auth' },
         { id: 5, name: 'Dashboard', path: '/dashboard' },
     ];
