@@ -26,7 +26,7 @@ const Navbar = () => {
                     {links.map(({ id, name, path }) => (
                         <li
                             key={id}
-                            className="px-4 font-bold text-orange-500 duration-100 cursor-pointer hover:scale-105 hover:rotate-12"
+                            className="px-4 font-bold text-black duration-100 cursor-pointer drop-shadow-xl hover:scale-105 "
                         >
                             {path ? (
                                 <RouterLink to={path}>{name}</RouterLink>
