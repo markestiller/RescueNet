@@ -8,7 +8,7 @@ const Navbar = () => {
         { id: 2, name: 'About' },
         { id: 3, name: 'Contact' },
         { id: 4, name: 'Join', path: '/auth' },
-        { id: 4, name: 'Dashboard', path: '/dashboard' },
+        { id: 5, name: 'Dashboard', path: '/dashboard' },
     ];
 
     const [icon, setIcon] = useState(false);
@@ -16,7 +16,7 @@ const Navbar = () => {
     return (
         <div
             name="Navbar"
-            className="z-50 flex items-center justify-between w-full h-20 "
+            className="z-50 flex items-center justify-between w-full h-20"
         >
             <div className="px-4 text-4xl font-bold text-transparent animate-pulse bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
                 WildFire
@@ -41,12 +41,12 @@ const Navbar = () => {
             </div>
             <div
                 onClick={() => setIcon(!icon)}
-                className="z-10 flex px-4 text-black cursor-pointer md:hidden hover:scale-105"
+                className="z-50 flex px-4 text-black cursor-pointer md:hidden hover:scale-105"
             >
                 {icon ? <FaTimes size={20} /> : <FaBars size={20} />}
             </div>
             {icon && (
-                <ul className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-screen bg-red-200">
+                <ul className="fixed z-50 top-0 left-0 flex flex-col items-center justify-center w-full h-screen bg-orange-600">
                     {links.map(({ id, name, path }) => (
                         <li
                             key={id}
