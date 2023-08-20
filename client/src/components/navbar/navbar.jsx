@@ -17,11 +17,7 @@ const Navbar = () => {
     return (
         <div
             name="Navbar"
-<<<<<<< HEAD
-            className="z-50 flex items-center justify-between w-full h-20"
-=======
             className="z-50 flex items-center justify-between w-full h-20 mx-4 "
->>>>>>> cdbc22c066ead3a7a7513f3cc0becc7642839e42
         >
             <RouterLink to="/">
                 <div className="px-4 text-4xl font-bold text-transparent animate-pulse bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
