@@ -64,7 +64,7 @@ export default function Dashboard() {
             <div className="flex flex-col items-center mt-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {/* Account Information */}
-                    <div className="relative p-20 text-xl bg-white border rounded-lg shadow-md">
+                    <div className="relative p-4 pb-10 text-xl bg-white border rounded-lg shadow-md">
                         <h2 className="items-center mb-2 text-2xl font-semibold">
                             Account
                         </h2>
