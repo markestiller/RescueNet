@@ -1,5 +1,4 @@
 import Navbar from '../components/navbar/navbar';
-import Footer from '../components/footer/footer';
 import Hero from '../components/hero/hero';
 import About from '../components/about/about';
 
@@ -9,7 +8,6 @@ const Main = () => {
             <Navbar />
             <Hero />
             <About />
-            <Footer />
         </div>
     );
 };

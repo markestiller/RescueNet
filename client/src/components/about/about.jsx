@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from '../footer/footer';
 import {
     Accordion,
     AccordionHeader,
@@ -139,6 +140,7 @@ const About = () => {
                     ))}
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
