@@ -1,4 +1,4 @@
-# Hack the 6ix
+# RescueNet
 
 ## 💡 Inspiration💡
 
@@ -29,6 +29,6 @@ We are also proud of how we integrated Twilio's SMS messaging services into the 
 
 We learned many things such as how to use React Router in linking to pages in an easy way. Also, leaving breadcrumbs in our Main.jsx allowed us to manually navigate to such pages when we didn't necessarily had anything set up in our web app. We also learned how to use many backend tools like Twilio and Circle. 
 
-## What's next for RescueNet
+## 👀 What's next for RescueNet 👀
 
 What's next for RescueNet includes many things. We are planning on completing the payment model using Circle API, including implementing automatic monthly charges and the ability to unsubscribe. Additionally, we plan on marketing to a few customers nationwide, this will allow us to conceptualize and iterate on our ideas till they are well polished. It will also help in scaling things to include countries such as the U.S.A and Mexico.
