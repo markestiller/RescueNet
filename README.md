@@ -1,5 +1,5 @@
 # RescueNet
-https://img.shields.io/badge/any_text-you_like-blue
+![Any Text You Like](https://img.shields.io/badge/any_text-you_like-blue)
 
 ## 💡 Inspiration💡
 
