@@ -54,11 +54,11 @@ const Navbar = () => {
                 {icon ? <FaTimes size={20} /> : <FaBars size={20} />}
             </div>
             {icon && (
-                <ul className="fixed z-50 top-0 left-0 flex flex-col items-center justify-center w-full h-screen bg-orange-600">
+                <ul className="fixed z-50 top-0 left-0 flex flex-col items-center justify-center w-full h-screen bg-white">
                     {links.map(({ id, name, path }) => (
                         <li
                             key={id}
-                            className="py-8 text-3xl font-medium text-white duration-100 cursor-pointer hover:scale-105"
+                            className="py-8 text-3xl font-medium text-orange-500 duration-100 cursor-pointer hover:scale-105 "
                         >
                             {path ? (
                                 <RouterLink to={path}>{name}</RouterLink>
