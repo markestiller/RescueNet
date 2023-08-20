@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Navbar from '../../components/navbar/navbar';
+import { useNavigate } from 'react-router-dom';
 
 const inputs = {
     firstName: {
@@ -59,6 +60,7 @@ const inputs = {
     },
 };
 export default function HomeownerAuth() {
+    const navigate = useNavigate();
     const [homeownerData, setHomeownerData] = useState({
         firstName: '',
         lastName: '',
@@ -142,13 +144,15 @@ export default function HomeownerAuth() {
                         </>
                     ))}
                 </form>
-                <button onClick={() => sendData(homeownerData)}>Submit</button>
+                <button onClick={() => sendData(homeownerData, navigate)}>
+                    Submit
+                </button>
             </div>
         </div>
     );
 }
 
-function sendData(homeownerData) {
+function sendData(homeownerData, navigate) {
     console.log(homeownerData);
     fetch(import.meta.env.VITE_BACKEND + '/api/homeowner', {
         method: 'POST',
@@ -172,6 +176,7 @@ function sendData(homeownerData) {
                 localStorage.setItem('age', data.age);
                 localStorage.setItem('phoneNumber', data.phoneNumber);
                 localStorage.setItem('occupants', data.occupants);
+                navigate('/dashboard');
             }
         });
 }

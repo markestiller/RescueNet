@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Navbar from '../../components/navbar/navbar';
+import { useNavigate } from 'react-router-dom';
 
 const inputs = {
     firstName: {
@@ -54,6 +55,7 @@ const inputs = {
     },
 };
 export default function SubscriberAuth() {
+    const navigate = useNavigate();
     const [subscriberData, setSubcriberData] = useState({
         firstName: '',
         lastName: '',
@@ -137,13 +139,15 @@ export default function SubscriberAuth() {
                         </>
                     ))}
                 </form>
-                <button onClick={() => sendData(subscriberData)}>Submit</button>
+                <button onClick={() => sendData(subscriberData, navigate)}>
+                    Submit
+                </button>
             </div>
         </div>
     );
 }
 
-function sendData(subscriberData) {
+function sendData(subscriberData, navigate) {
     console.log(subscriberData);
     fetch(import.meta.env.VITE_BACKEND + '/api/subscriber', {
         method: 'POST',
@@ -167,6 +171,7 @@ function sendData(subscriberData) {
                 localStorage.setItem('age', data.age);
                 localStorage.setItem('phoneNumber', data.phoneNumber);
                 localStorage.setItem('occupants', data.occupants);
+                navigate('/dashboard');
             }
         });
 }
