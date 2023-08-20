@@ -61,11 +61,11 @@ export default function Dashboard() {
                     }}
                 ></div>
             </div>
-            <div className="flex flex-col items-center p-8">
+            <div className="flex flex-col items-center mt-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {/* Account Information */}
-                    <div className="relative p-4 pb-10 bg-white border rounded-lg shadow-sm ">
-                        <h2 className="items-center mb-2 text-lg font-semibold">
+                    <div className="relative p-4 pb-10 bg-white border rounded-lg shadow-md text-xl">
+                        <h2 className="items-center mb-2 text-2xl font-semibold">
                             Account
                         </h2>
                         <p className="text-gray-700">
@@ -89,10 +89,10 @@ export default function Dashboard() {
                     </div>
 
                     {/* Subscribed Status */}
-                    <div className="relative p-4 bg-white border rounded-lg shadow-sm">
-                        <h2 className="mb-2 text-lg font-semibold">Status</h2>
+                    <div className="relative p-20 bg-white rounded-lg shadow-md">
+                        <h2 className="mb-2 text-2xl font-semibold">Status</h2>
 
-                        <p className="text-gray-700">
+                        <p className="text-gray-700 text-xl">
                             {userData?.isSubscribed
                                 ? 'Subscribed ✅'
                                 : 'Not Subscribed ❌'}
@@ -113,7 +113,7 @@ export default function Dashboard() {
                 </div>
             </div>
             <div className="flex items-center justify-center pt-10">
-                <div className="flex text-2xl font-bold">
+                <div className="flex text-3xl font-bold">
                     Thank you for your support!
                 </div>
                 <div className="flex w-1/4 h-1/4 ">

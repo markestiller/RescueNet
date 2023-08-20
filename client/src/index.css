@@ -12,3 +12,8 @@ html {
 body {
     font-family: 'Sora', sans-serif;
 }
+
+::selection {
+    color: white;
+    background: red;
+}
